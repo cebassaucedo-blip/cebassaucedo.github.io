@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Katy 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body {
+  background: linear-gradient(135deg, #ff4f8b, #ffb6c1);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  overflow: hidden;
+}
+.card {
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  text-align: center;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.2);
+}
+button {
+  margin: 10px;
+  padding: 14px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+}
+#yes { background: #ff3f7f; color: white; }
+#no { background: #ddd; position: absolute; }
+
+.heart {
+  position: fixed;
+  color: #ff3f7f;
+  font-size: 20px;
+  animation: fall 3s linear forwards;
+}
+@keyframes fall {
+  to { transform: translateY(100vh); opacity: 0; }
+}
+</style>
+</head>
+<body>
+
+<div class="card">
+  <h1>💖 Katy 💖</h1>
+  <p>Desde que llegaste a mi vida,<br>todo se siente más bonito ✨</p>
+  <h2>¿Quieres ser mi San Valentín? 🌹</h2>
+  <button id="yes" onclick="accept()">Sí 💕</button>
+  <button id="no" onmouseover="moveNo()">No 🙈</button>
+</div>
+
+<script>
+function accept() {
+  document.body.innerHTML = `
+    <div class="card">
+      <h1>🥰 TE AMO KATY 🥰</h1>
+      <p>Eres mi persona favorita 💖<br>
+      Gracias por existir ❤️</p>
+    </div>`;
+  for(let i=0;i<30;i++) createHeart();
+}
+
+function moveNo() {
+  const btn = document.getElementById("no");
+  btn.style.left = Math.random() * 80 + "vw";
+  btn.style.top = Math.random() * 80 + "vh";
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "💖";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.top = "-20px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 3000);
+}
+</script>
+
+</body>
+</html>
